@@ -97,6 +97,7 @@ body {
 
 }
 
+
 /* Media query para dispositivos móveis */
 @media only screen and (max-width: 600px) {
     .card {
