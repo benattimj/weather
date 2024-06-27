@@ -96,3 +96,52 @@ body {
     margin-top: 10px;
 
 }
+
+/* Media query para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+    .card {
+        padding: 30px 20px; /* Reduz o padding para melhorar o espaçamento em telas menores */
+    }
+
+    .search {
+        width: 100%; /* Ocupa toda a largura disponível */
+        margin-bottom: 20px; /* Adiciona espaço abaixo do bloco de pesquisa */
+    }
+
+    .search input {
+        padding: 15px 20px; /* Reduz o padding do input */
+        font-size: 16px; /* Reduz o tamanho da fonte do input */
+    }
+
+    .search button {
+        width: 100px; /* Aumenta um pouco a largura do botão */
+        height: 50px; /* Reduz a altura do botão */
+    }
+
+    .weather h1 {
+        font-size: 40px; /* Reduz o tamanho da fonte do título principal do clima */
+    }
+
+    .weather h2 {
+        font-size: 30px; /* Reduz o tamanho da fonte do subtítulo do clima */
+    }
+
+    .weather-icon {
+        width: 50px; /* Reduz o tamanho do ícone de clima */
+        margin-top: 30px; /* Reduz a margem superior do ícone de clima */
+    }
+
+    .details {
+        flex-direction: column; /* Altera para coluna para melhor visualização em dispositivos móveis */
+        margin-top: 30px; /* Reduz a margem superior entre os detalhes */
+    }
+
+    .col img {
+        width: 30px; /* Reduz o tamanho do ícone dentro das colunas */
+    }
+
+    .humidity,
+    .wind {
+        font-size: 20px; /* Reduz o tamanho da fonte dos detalhes de umidade e vento */
+    }
+}
