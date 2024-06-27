@@ -10,36 +10,71 @@
 
 <body>
 
-        <div class="card">
-            <h1> Tempo Real </h1>
-            <div class="search">
-                <input type="text" placeholder="Entre o nome da cidade" spellcheck="false">
-                <button> <img src="images/search.png" alt=""></button>
-            </div>
-            <div class="weather">
-                <img src="images/rain (1).png" class="weather-icon">
-                <h1 class="temp"> 30ºC</h1>
-                <h2 class="city">Uberlândia</h2>
-                <div class="details">
-                    <div class="col">
-                        <img src="/images/humidity.png">
-                        <div>
-                            <p class="humidity"> 50%</p>
-                            <p>Umidade</p>
-                        </div>
+    <div class="card">
+        <h1> Tempo Real </h1>
+        <div class="search">
+            <input type="text" placeholder="Entre o nome da cidade" spellcheck="false">
+            <button> <img src="images/search.png" alt=""></button>
+        </div>
+        <div class="weather">
+            <img src="images/rain (1).png" class="weather-icon">
+            <h1 class="temp"> 30ºC</h1>
+            <h2 class="city">Uberlândia</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="/images/humidity.png">
+                    <div>
+                        <p class="humidity"> 50%</p>
+                        <p>Umidade</p>
                     </div>
+                </div>
 
-                    <div class="col">
-                        <img src="/images/wind.png">
-                        <div>
-                            <p class="wind"> 10km/h</p>
-                            <p>Vento</p>
-                        </div>
+                <div class="col">
+                    <img src="/images/wind.png">
+                    <div>
+                        <p class="wind"> 10km/h</p>
+                        <p>Vento</p>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <p class="copyright">Todos direitos reservados 2024 @benattimj</p>
     </div>
+
+    <script>
+
+        const apiKey = "7c0ebe1eb07695ae24ba697d0c5d8715";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+
+        async function checkWeather(city) {
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+            var data = await response.json();
+
+            console.log(data);
+
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "ºC";
+            document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
+            document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+        }
+        searchBox.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Evita o comportamento padrão de submeter formulários
+                checkWeather(searchBox.value);
+            }
+        });
+        searchBtn.addEventListener("click", () => {
+
+            checkWeather(searchBox.value);
+
+        })
+
+    </script>
+
 
 </body>
 
